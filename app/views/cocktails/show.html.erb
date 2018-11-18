@@ -1,27 +1,24 @@
 <div class="container">
   <h1> <%= @cocktail.name %> Recipe</h1>
-    <h3>
-      Ingredients:
-    </h3>
-
-    <div class="row">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+      <%= cl_image_tag @cocktail.photo, height: 300, width: 200, crop: :fill %>
+      </div>
+    <div class="col-xs-12 col-sm-4">
+      <h5>Ingredients:</h5>
       <% @cocktail.doses.each do |dose| %>
-      <div class= "col-xs-12 col-sm-4 col-md-3">
+        <ul>
+        <li>
         <%= dose.ingredient.name %> | <%= dose.description %>
         <%= link_to "🗑", dose_path(dose),
         method: :delete,
         data: { confirm: "Are you sure?" } %>
-      </div>
+        </li>
+        </ul>
       <% end %>
     </div>
-  </div>
-  <div>
-    <hr>
-    <div class="row">
-      <div class= "col-xs-8 col-xs-offset-2">
-        <%= render 'doses/form', cocktail: @cocktail, dose: @dose %>
-        <hr>
-      </div>
+    <div class="col-xs-12 col-sm-4">
+      <%= render 'doses/form', cocktail: @cocktail, dose: @dose %>
     </div>
   </div>
 </div>

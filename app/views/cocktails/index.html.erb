@@ -1,21 +1,17 @@
 <%= render '/shared/banner' %>
 
-
 <div class="container">
-
-  <div class="container">
-    <div class="row">
-      <% @cocktails.each do |cocktail| %>
-      <div class="col-xs-12 col-sm-4 col-md-3">
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://www.prodijee.com/wp-content/uploads/2015/12/Depositphotos_5810946_XXL.jpg');">
-          <div class="card-description">
-            <h2> <%= cocktail.name %> </h2>
-            <p><%= link_to "Recipe", cocktail_path(cocktail), class: "link-to-recipe" %></p>
-          </div>
-<!--             <a class="card-link" href="#" ></a>
- -->     </div>
+  <div class="row">
+    <% @cocktails.each do |cocktail| %>
+    <div class="col-xs-12 col-sm-4 col-md-3">
+      <div class="card"> <%= cl_image_tag cocktail.photo, width: 175, height: 200, fill: :scale, class:"card", style: "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))"%>
+        <div class="card-description">
+          <h2> <%= cocktail.name %> </h2>
         </div>
-      <% end  %>
+        <%= link_to cocktail_path(cocktail), class: "card-link" do %>
+        <% end %>
+      </div>
     </div>
+    <% end  %>
   </div>
 </div>
